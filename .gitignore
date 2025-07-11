@@ -1,3 +1,5 @@
 .terraform/
 .envrc
 *.tfplan
+*.tfstate
+*.tfstate.backup
