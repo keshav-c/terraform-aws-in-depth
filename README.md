@@ -24,6 +24,10 @@ tofu apply
 - Crucially, the source of this traffic should be the IP address range for the EC2 Instance Connect service in your region (ap-south-1).
 - Attach this new security group to your EC2 instance.
 
+## Finding the AMI
+
+Book uses an AMI owned by the ubuntu company. For that is set the `aws_ami.owners` in the lookup to the AWS ID of the Canonical (Ubuntu) company. Google search for "Official aws account id for ubuntu amis" returns that same id. In the aws web console also we can search for images.
+
 ## env
 
 AWS_PROFILE=
