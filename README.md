@@ -10,7 +10,14 @@ aws sso ...
 tofu plan -out plan.tfplan
 
 tofu apply
+```
 
+## Rollback (destroy)
+
+```sh
+tofu plan -destroy -out plan.tfplan
+
+tofu apply "plan.tfplan"
 ```
 
 ## Why can't connect using instance connect (ssh)
