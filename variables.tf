@@ -7,7 +7,7 @@ variable "subnet_id" {
   type        = string
   description = "The ID of the Subnet to launch the instance into."
   validation {
-    condition     = length(regexall("^subnet-[\\d|\\w]+$")) == 1
+    condition     = length(regexall("^subnet-[\\d|\\w]+$", var.subnet_id)) == 1
     error_message = "The subnet id must match the pattern ^subnet-[\\d|\\w]+$"
   }
 }
