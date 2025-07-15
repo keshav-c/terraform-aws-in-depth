@@ -35,6 +35,12 @@ tofu apply "plan.tfplan"
 
 Book uses an AMI owned by the ubuntu company. For that is set the `aws_ami.owners` in the lookup to the AWS ID of the Canonical (Ubuntu) company. Google search for "Official aws account id for ubuntu amis" returns that same id. In the aws web console also we can search for images.
 
+## Upgrading modules
+
+After updating module code locally and publishing (to github), I want to use the updated modules in the main module (_example_). But running `tofu init` followed by `tofu plan` throws an error saying the changes were not recognised.
+
+To solve this run `tofu init -upgrade`. This tells tofu to upgrade its modules. This is followed by the usual steps of `plan` and `apply`.
+
 ## env
 
 AWS_PROFILE=
