@@ -13,6 +13,7 @@ module "test_instance" {
   source        = "github.com/keshav-c/terraform-aws-in-depth//modules/ec2_instance"
   subnet_id     = data.aws_subnets.default.ids[0]
   instance_type = "t3.small"
+  name_prefix   = "My-Awesome-EC2"
 }
 
 output "aws_instance_arn" {
