@@ -1,0 +1,36 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] data.aws_subnets.default (expand)" [label = "data.aws_subnets.default", shape = "box"]
+		"[root] data.aws_vpc.default (expand)" [label = "data.aws_vpc.default", shape = "box"]
+		"[root] module.test_instance.aws_instance.hello_world" [label = "module.test_instance.aws_instance.hello_world", shape = "box"]
+		"[root] module.test_instance.aws_instance.hello_world (expand)" [label = "module.test_instance.aws_instance.hello_world", shape = "box"]
+		"[root] module.test_instance.data.aws_ami.ubuntu (expand)" [label = "module.test_instance.data.aws_ami.ubuntu", shape = "box"]
+		"[root] provider[\"registry.opentofu.org/hashicorp/aws\"]" [label = "provider[\"registry.opentofu.org/hashicorp/aws\"]", shape = "diamond"]
+		"[root] var.region" [label = "var.region", shape = "note"]
+		"[root] data.aws_subnets.default (expand)" -> "[root] data.aws_vpc.default (expand)"
+		"[root] data.aws_vpc.default (expand)" -> "[root] provider[\"registry.opentofu.org/hashicorp/aws\"]"
+		"[root] module.test_instance (close)" -> "[root] module.test_instance.output.aws_instance_arn (expand)"
+		"[root] module.test_instance.aws_instance.hello_world (expand)" -> "[root] module.test_instance.data.aws_ami.ubuntu (expand)"
+		"[root] module.test_instance.aws_instance.hello_world (expand)" -> "[root] module.test_instance.var.instance_type (expand, reference)"
+		"[root] module.test_instance.aws_instance.hello_world (expand)" -> "[root] module.test_instance.var.subnet_id (expand, reference)"
+		"[root] module.test_instance.aws_instance.hello_world" -> "[root] module.test_instance.aws_instance.hello_world (expand)"
+		"[root] module.test_instance.data.aws_ami.ubuntu (expand)" -> "[root] module.test_instance (expand)"
+		"[root] module.test_instance.data.aws_ami.ubuntu (expand)" -> "[root] provider[\"registry.opentofu.org/hashicorp/aws\"]"
+		"[root] module.test_instance.output.aws_instance_arn (expand)" -> "[root] module.test_instance.aws_instance.hello_world"
+		"[root] module.test_instance.var.instance_type (expand, input)" -> "[root] module.test_instance (expand)"
+		"[root] module.test_instance.var.instance_type (expand, reference)" -> "[root] module.test_instance.var.instance_type (expand, input)"
+		"[root] module.test_instance.var.subnet_id (expand, input)" -> "[root] data.aws_subnets.default (expand)"
+		"[root] module.test_instance.var.subnet_id (expand, input)" -> "[root] module.test_instance (expand)"
+		"[root] module.test_instance.var.subnet_id (expand, reference)" -> "[root] module.test_instance.var.subnet_id (expand, input)"
+		"[root] output.aws_instance_arn (expand)" -> "[root] module.test_instance.output.aws_instance_arn (expand)"
+		"[root] provider[\"registry.opentofu.org/hashicorp/aws\"] (close)" -> "[root] module.test_instance.aws_instance.hello_world"
+		"[root] provider[\"registry.opentofu.org/hashicorp/aws\"]" -> "[root] var.region (expand, reference)"
+		"[root] root" -> "[root] module.test_instance (close)"
+		"[root] root" -> "[root] output.aws_instance_arn (expand)"
+		"[root] root" -> "[root] provider[\"registry.opentofu.org/hashicorp/aws\"] (close)"
+		"[root] var.region (expand, reference)" -> "[root] var.region"
+	}
+}
+
