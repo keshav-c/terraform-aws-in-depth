@@ -23,3 +23,17 @@ variable "tags" {
   description = "Key/Value pairs to pass to AWS as tags."
   default     = {}
 }
+
+variable "instance_count" {
+  type        = number
+  description = "The number of instances to launch"
+  default     = 0
+  validation {
+    condition     = can(parseint(tostring(var.instance_count), 10))
+    error_message = "The instance count must be a whole number."
+  }
+  validation {
+    condition     = var.instance_count >= 0
+    error_message = "The instance count cannot be negative."
+  }
+}
